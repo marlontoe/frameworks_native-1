@@ -797,7 +797,7 @@ status_t SurfaceComposerClient::getAnimationFrameStats(FrameStats* outStats) {
     return ComposerService::getComposerService()->getAnimationFrameStats(outStats);
 }
 
-#if defined(ICS_CAMERA_BLOB) || defined(MR0_CAMERA_BLOB)
+#if defined(ICS_CAMERA_BLOB) || defined(MR0_CAMERA_BLOB) || LEGACY_BLOB_COMPATIBLE
 status_t SurfaceComposerClient::getDisplayInfo(
         int32_t displayId, DisplayInfo* info)
 {
