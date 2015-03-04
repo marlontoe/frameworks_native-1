@@ -88,9 +88,10 @@ public:
     /* Triggers screen on/off or low power mode and waits for it to complete */
     static void setDisplayPowerMode(const sp<IBinder>& display, int mode);
 
-#ifdef LEGACY_BLOB_COMPATIBLE
+#ifdef LEGACY_BLOB_COMPATIBLE || defined(MR0_CAMERA_BLOB)
     static ssize_t getDisplayWidth(int32_t displayId);
     static ssize_t getDisplayHeight(int32_t displayId);
+    static ssize_t getDisplayOrientation(int32_t displayId);
 #endif
 
     // ------------------------------------------------------------------------
@@ -127,6 +128,10 @@ public:
 
     //! Close a composer transaction on all active SurfaceComposerClients.
     static void closeGlobalTransaction(bool synchronous = false);
+
+#if defined(MR0_CAMERA_BLOB)
+    static int setOrientation(int32_t dpy, int orientation, uint32_t flags);
+#endif
 
     //! Flag the currently open transaction as an animation transaction.
     static void setAnimationTransaction();
