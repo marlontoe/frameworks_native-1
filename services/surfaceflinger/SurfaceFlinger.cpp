@@ -3234,7 +3234,8 @@ status_t SurfaceFlinger::captureScreenImplLocked(
                                 syncFd = -1;
                             }
                             eglDestroySyncKHR(mEGLDisplay, sync);
-                        } else {
+                        }
+                        if (syncFd < 0) {
                             // fallback path
                             sync = eglCreateSyncKHR(mEGLDisplay, EGL_SYNC_FENCE_KHR, NULL);
                             if (sync != EGL_NO_SYNC_KHR) {
